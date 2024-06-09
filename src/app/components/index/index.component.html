@@ -3,13 +3,12 @@
 </div>
 <nav>
     <ul>
-        <!-- Hipervínculos -->
-        <li><a routerLink="index" href="index.html">Inicio</a></li>
-        <li><a href="familiar.html">Familiar</a></li><!-- Categoria -->
-        <li><a href="infantil.html">Infantil</a></li><!-- Categoria -->
-        <li><a href="cooperativo.html">Cooperativo</a></li><!-- Categoria -->
-        <li><a href="aventura.html">Aventura</a></li><!-- Categoria -->
-        <li><a href="registro.html">Registrarse</a></li><!-- Formulario registro -->
+        <li><a routerLink="/index">Inicio</a></li>
+        <li><a routerLink="/familiar">Familiar</a></li>
+        <li><a routerLink="/infantil">Infantil</a></li>
+        <li><a routerLink="/cooperativo">Cooperativo</a></li>
+        <li><a routerLink="/aventura">Aventura</a></li>
+        <li><a routerLink="/registro">Registrarse</a></li>
     </ul>
 </nav>
 <h2>Juegos de Mesa</h2>
@@ -27,22 +26,22 @@
     <div class="category">
         <img src="assets/images/categoria_familia.png" alt="Categoría 1">
         <h3>Familiar</h3>
-        <button class="button" id="btnFamiliar" onclick="window.location.href = 'familiar.html'">Ver Productos</button>
+        <button class="button" id="btnFamiliar" routerLink="/familiar">Ver Productos</button>
     </div>
     <div class="category">
         <img src="assets/images/categoria_infantil.png" alt="Categoría 2">
         <h3>Infantil</h3>
-        <button class="button" id="btnInfantil" onclick="window.location.href = 'infantil.html'">Ver Productos</button>
+        <button class="button" id="btnInfantil" routerLink="/infantil">Ver Productos</button>
     </div>
     <div class="category">
         <img src="assets/images/categoria_cooperativo.png" alt="Categoría 3">
         <h3>Cooperativo</h3>
-        <button class="button" id="btnCooperativo" onclick="window.location.href = 'cooperativo.html'">Ver Productos</button>
+        <button class="button" id="btnCooperativo" routerLink="/cooperativo">Ver Productos</button>
     </div>
     <div class="category">
         <img src="assets/images/categoria_aventura.png" alt="Categoría 4">
         <h3>Aventura</h3>
-        <button class="button" id="btnAventura" onclick="window.location.href = 'aventura.html'">Ver Productos</button>
+        <button class="button" id="btnAventura" routerLink="/aventura">Ver Productos</button>
     </div>      
     <div class="clear"></div>
 </div>
