@@ -1,0 +1,86 @@
+<div class="container_nombre_sitio">
+    <h1>Saint Peter Games</h1><!-- Nombre de la empresa -->
+</div>
+<nav>
+    <ul>
+        <li><a routerLink="/index">Inicio</a></li>
+        <li><a routerLink="/familiar">Familiar</a></li>
+        <li><a routerLink="/infantil">Infantil</a></li>
+        <li><a routerLink="/cooperativo">Cooperativo</a></li>
+        <li><a routerLink="/aventura">Aventura</a></li>
+        <li><a routerLink="/registro">Registrarse</a></li>
+    </ul>
+</nav>
+<div class="container form-container">
+    <div class="card form-card shadow p-4">
+        <h2 class="text-center">Formulario de Registro</h2>
+        <form id="registrationForm" class="needs-validation" novalidate>
+            <div class="row mt-3 justify-content-center">
+                <div class="col-md-4">
+                    <label class="form-label">Nombre <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="txtNombre" maxlength="30" required>
+                    <div class="invalid-feedback">Este campo es obligatorio.</div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Segundo Nombre <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="txtSegundoNombre" maxlength="30" required>
+                    <div class="invalid-feedback">Este campo es obligatorio.</div>
+                </div>
+            </div>
+            <div class="row mt-3 justify-content-center">
+                <div class="col-md-4">
+                    <label class="form-label">Apellido Paterno <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="txtApellidoPaterno" maxlength="30" required>
+                    <div class="invalid-feedback">Este campo es obligatorio.</div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Apellido Materno <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="txtApellidoMaterno" maxlength="30" required>
+                    <div class="invalid-feedback">Este campo es obligatorio.</div>
+                </div>
+            </div>
+            <div class="row mt-3 justify-content-center">
+                <div class="col-md-4">
+                    <label class="form-label">Dirección de despacho</label>
+                    <input type="text" class="form-control" id="txtDireccion" maxlength="150">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Fecha nacimiento <span class="text-danger">*</span></label>
+                    <input type="date" class="form-control" id="dtFechaNacimiento" required>
+                    <div class="invalid-feedback fecha-nacimiento">Este campo es obligatorio.</div>
+                </div>
+            </div>
+            <div class="row mt-3 justify-content-center">
+                <div class="col-md-4">
+                    <label class="form-label">Nombre de usuario <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="txtUsuario" required>
+                    <div class="invalid-feedback">Este campo es obligatorio.</div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Correo electrónico <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" id="txtCorreo" required>
+                    <div class="invalid-feedback">Por favor, introduce un correo electrónico válido.</div>
+                </div>
+            </div>
+            <div class="row mt-3 justify-content-center">
+                <div class="col-md-4">
+                    <label class="form-label">Contraseña <span class="text-danger">*</span></label>
+                    <input type="password" class="form-control" id="txtContrasena" required>
+                    <div class="invalid-feedback contrasena">Este campo es obligatorio.</div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Confirmar contraseña <span class="text-danger">*</span></label>
+                    <input type="password" class="form-control" id="txtRepetirContrasena" required>
+                    <div class="invalid-feedback repetir-contrasena">Este campo es obligatorio.</div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-10 text-end">
+                    <button class="btn btn-dark" id="btnLimpiarFormulario">Limpiar</button>
+                    <button type="submit" class="btn btn-primary" id="btnRegistrarse">Registrarse</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -4,6 +4,7 @@ import { FamiliarComponent } from './components/familiar/familiar.component';
 import { InfantilComponent } from './components/infantil/infantil.component';
 import { CooperativoComponent } from './components/cooperativo/cooperativo.component';
 import { AventuraComponent } from './components/aventura/aventura.component';
+import { RegistroComponent } from './components/registro/registro.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/index', pathMatch: 'full' },
@@ -12,4 +13,5 @@ export const routes: Routes = [
     {path: 'infantil', component: InfantilComponent},
     {path: 'cooperativo', component: CooperativoComponent},
     {path: 'aventura', component: AventuraComponent},
+    {path: 'registro', component: RegistroComponent}
 ];
