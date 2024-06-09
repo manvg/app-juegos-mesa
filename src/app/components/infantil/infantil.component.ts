@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-familiar',
+  selector: 'app-infantil',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './familiar.component.html',
-  styleUrl: './familiar.component.scss'
+  templateUrl: './infantil.component.html',
+  styleUrl: './infantil.component.scss'
 })
-export class FamiliarComponent {
-  
+export class InfantilComponent {
+
 }
