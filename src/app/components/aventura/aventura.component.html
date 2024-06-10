@@ -16,26 +16,17 @@
     <ul class="breadcrumb">
         <li><a routerLink="/index">Inicio</a></li>
         <li>Aventura</li>
-      </ul>
-    <div class="product">
-        <img src="assets/images/aventura_1.png" alt="Producto 10">
-        <h3>Almanac: El Camino del Dragón</h3>
-        <p>Tu caravana está lista y los vagones ordenados. El camino que tienes por delante está plagado de peligros, pero ése es el precio de una fortuna inimaginable.</p>
-        <p class="precio">$34.990 <span><s class="precio-anterior">$44.000</s></span></p>
-        <button class="button">Añadir al Carrito</button>
-    </div>
-    <div class="product">
-        <img src="assets/images/aventura_2.png" alt="Producto 11">
-        <h3>Wonder Book</h3>
-        <p>Wonder Book es un juego cooperativo y narrativo. Sumérgete en la aventura y descubre los diferentes rumbos que puede tomar la historia. ¡Cada decisión tendrá su consecuencia!.</p>
-        <p class="precio">$44.990 <span><s class="precio-anterior">$61.990</s></span></p>
-        <button class="button">Añadir al Carrito</button>
-    </div>
-    <div class="product">
-        <img src="assets/images/aventura_3.png" alt="Producto 12">
-        <h3>Tough Calls: Dystopia</h3>
-        <p>Tough Calls: Dystopia es un juego narrativo y argumentativo ambientado en una variedad de escenarios construidos desde la Ciencia Ficción, como una invasión zombie...</p>
-        <p class="precio">$16.990</p>
+    </ul>
+    <div *ngFor="let producto of productos" class="product">
+        <img [src]="producto.imagen" [alt]="producto.titulo">
+        <h3>{{ producto.titulo }}</h3>
+        <p>{{ producto.descripcion }}</p>
+        <p class="precio">
+            ${{ producto.precio }}
+            <span *ngIf="producto.precioOferta">
+                <s class="precio-anterior">${{ producto.precioOferta }}</s>
+            </span>
+        </p>
         <button class="button">Añadir al Carrito</button>
     </div>
     <div class="clear"></div>
