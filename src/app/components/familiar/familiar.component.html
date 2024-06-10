@@ -17,25 +17,16 @@
         <li><a routerLink="/index">Inicio</a></li>
         <li>Familiar</li>
     </ul>
-    <div class="product">
-        <img src="assets/images/familiar_1.png" alt="Producto 1">
-        <h3>Exit Kids: Acertijos en la Jungla</h3>
-        <p>Juego de escape cooperativo</p>
-        <p class="precio">$15.000</p>
-        <button class="button">Añadir al Carrito</button>
-    </div>
-    <div class="product">
-        <img src="assets/images/familiar_2.png" alt="Producto 2">
-        <h3>Fantasma Blitz</h3>
-        <p>5 piezas, 60 cartas con ilustraciones.</p>
-        <p class="precio">$12.990 <span><s class="precio-anterior">$24.990</s></span></p>
-        <button class="button">Añadir al Carrito</button>
-    </div>
-    <div class="product">
-        <img src="assets/images/familiar_3.png" alt="Producto 3">
-        <h3>¡Rescate!</h3>
-        <p>Es un juego cooperativo de lucha contra el fuego.</p>
-        <p class="precio">$22.990 <span><s class="precio-anterior">$32.000</s></span></p>
+    <div *ngFor="let producto of productos" class="product">
+        <img [src]="producto.imagen" [alt]="producto.titulo">
+        <h3>{{ producto.titulo }}</h3>
+        <p>{{ producto.descripcion }}</p>
+        <p class="precio">
+            ${{ producto.precio | number }}
+            <span *ngIf="producto.precioOferta">
+                <s class="precio-anterior">${{ producto.precioOferta | number }}</s>
+            </span>
+        </p>
         <button class="button">Añadir al Carrito</button>
     </div>
     <div class="clear"></div>
