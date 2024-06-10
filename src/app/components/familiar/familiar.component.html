@@ -22,9 +22,9 @@
         <h3>{{ producto.titulo }}</h3>
         <p>{{ producto.descripcion }}</p>
         <p class="precio">
-            ${{ producto.precio | number }}
+            ${{ producto.precio }}
             <span *ngIf="producto.precioOferta">
-                <s class="precio-anterior">${{ producto.precioOferta | number }}</s>
+                <s class="precio-anterior">${{ producto.precioOferta }}</s>
             </span>
         </p>
         <button class="button">Añadir al Carrito</button>
