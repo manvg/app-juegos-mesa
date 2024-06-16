@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-registro',
@@ -14,9 +15,9 @@ export class RegistroComponent {
   formRegistro!: FormGroup;
   arrayUsuarios: any[] = [];
   enviado = false;
-  mensajeExito = '';
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.formRegistro = this.fb.group({
@@ -49,11 +50,12 @@ export class RegistroComponent {
       };
 
       this.arrayUsuarios.push(nuevoUsuario);
-      this.mensajeExito = 'Usuario agregado con éxito';
-
       this.formRegistro.reset();
       this.enviado = false;
-      alert('OK');
+
+      this.snackBar.open('Se guardó correctamente el usuario', 'Cerrar', {
+        duration: 3000,
+      });
     }
   }
 
