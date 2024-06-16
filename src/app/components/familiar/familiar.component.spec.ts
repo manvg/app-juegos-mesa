@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { FamiliarComponent } from './familiar.component';
+import { CommonModule } from '@angular/common';
+import { RouterModule, ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('FamiliarComponent', () => {
   let component: FamiliarComponent;
@@ -8,7 +10,20 @@ describe('FamiliarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FamiliarComponent]
+      imports: [CommonModule, RouterModule, FamiliarComponent],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            params: of({}),
+            snapshot: {
+              paramMap: {
+                get: () => null
+              }
+            }
+          }
+        }
+      ]
     })
     .compileComponents();
 
@@ -17,7 +32,7 @@ describe('FamiliarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('El componente FAMILIAR se crea correctamente', () => {
     expect(component).toBeTruthy();
   });
 });

@@ -100,7 +100,7 @@
           <div *ngIf="enviado && formRegistro.get('confirmarContrasena')?.invalid">
             <small class="campo-obligatorio" *ngIf="formRegistro.get('confirmarContrasena')?.errors?.['required']">Este campo es obligatorio.</small>
           </div>
-          <div *ngIf="enviado && formRegistro.errors?.['contraseñasDistintas']">
+          <div *ngIf="enviado && formRegistro.errors?.['contrasenasDistintas']">
             <small class="campo-obligatorio">Las contraseñas no coinciden.</small>
           </div>
         </div>

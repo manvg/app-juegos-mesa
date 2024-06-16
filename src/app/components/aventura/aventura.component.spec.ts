@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AventuraComponent } from './aventura.component';
+import { CommonModule } from '@angular/common';
+import { RouterModule, ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('AventuraComponent', () => {
   let component: AventuraComponent;
@@ -8,7 +10,20 @@ describe('AventuraComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AventuraComponent]
+      imports: [CommonModule, RouterModule, AventuraComponent],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            params: of({}),
+            snapshot: {
+              paramMap: {
+                get: () => null
+              }
+            }
+          }
+        }
+      ]
     })
     .compileComponents();
 
@@ -17,7 +32,7 @@ describe('AventuraComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('El componente AVENTURA se crea correctamente', () => {
     expect(component).toBeTruthy();
   });
 });

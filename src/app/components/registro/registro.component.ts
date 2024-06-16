@@ -62,7 +62,7 @@ export class RegistroComponent {
     const confirmarContrasena = form.get('confirmarContrasena')!.value;
 
     if (contrasena && confirmarContrasena && contrasena !== confirmarContrasena) {
-      return { contraseñasDistintas: true };
+      return { contrasenasDistintas: true };
     }
     return null;
   }

@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { InfantilComponent } from './infantil.component';
+import { CommonModule } from '@angular/common';
+import { RouterModule, ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('InfantilComponent', () => {
   let component: InfantilComponent;
@@ -8,7 +10,20 @@ describe('InfantilComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [InfantilComponent]
+      imports: [CommonModule, RouterModule, InfantilComponent],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            params: of({}),
+            snapshot: {
+              paramMap: {
+                get: () => null
+              }
+            }
+          }
+        }
+      ]
     })
     .compileComponents();
 
@@ -17,7 +32,7 @@ describe('InfantilComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('El componente INFANTIL se crea correctamente', () => {
     expect(component).toBeTruthy();
   });
 });
