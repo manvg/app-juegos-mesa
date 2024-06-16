@@ -1,87 +1,116 @@
 <div class="container_nombre_sitio">
-    <h1>Saint Peter Games</h1><!-- Nombre de la empresa -->
+  <h1>Saint Peter Games</h1><!-- Nombre de la empresa -->
 </div>
 <nav>
-    <ul>
-        <li><a routerLink="/index">Inicio</a></li>
-        <li><a routerLink="/familiar">Familiar</a></li>
-        <li><a routerLink="/infantil">Infantil</a></li>
-        <li><a routerLink="/cooperativo">Cooperativo</a></li>
-        <li><a routerLink="/aventura">Aventura</a></li>
-        <li><a routerLink="/registro">Registrarse</a></li>
-    </ul>
+  <ul>
+    <li><a routerLink="/index">Inicio</a></li>
+    <li><a routerLink="/familiar">Familiar</a></li>
+    <li><a routerLink="/infantil">Infantil</a></li>
+    <li><a routerLink="/cooperativo">Cooperativo</a></li>
+    <li><a routerLink="/aventura">Aventura</a></li>
+    <li><a routerLink="/registro">Registrarse</a></li>
+  </ul>
 </nav>
 <div class="container form-container">
-    <div class="card form-card shadow p-4">
-        <h2 class="text-center">Formulario de Registro</h2>
-        <form (ngSubmit)="registrarse(registrationForm)" #registrationForm="ngForm" novalidate>
-            <div *ngIf="mensajeExito" class="alert alert-success">{{ mensajeExito }}</div>
-            <div class="row mt-3 justify-content-center">
-                <div class="col-md-4">
-                    <label class="form-label">Nombre <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="txtNombre" maxlength="30" required [(ngModel)]="usuario.nombre" name="nombre" #nombre="ngModel">
-                    <div class="invalid-feedback" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">Este campo es obligatorio.</div>
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label">Segundo Nombre <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="txtSegundoNombre" maxlength="30" required [(ngModel)]="usuario.segundoNombre" name="segundoNombre">
-                    <div class="invalid-feedback" *ngIf="registrationForm.submitted && !usuario.segundoNombre">Este campo es obligatorio.</div>
-                </div>
-            </div>
-            <div class="row mt-3 justify-content-center">
-                <div class="col-md-4">
-                    <label class="form-label">Apellido Paterno <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="txtApellidoPaterno" maxlength="30" required [(ngModel)]="usuario.apellidoPaterno" name="apellidoPaterno">
-                    <div class="invalid-feedback" *ngIf="registrationForm.submitted && !usuario.apellidoPaterno">Este campo es obligatorio.</div>
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label">Apellido Materno <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="txtApellidoMaterno" maxlength="30" required [(ngModel)]="usuario.apellidoMaterno" name="apellidoMaterno">
-                    <div class="invalid-feedback" *ngIf="registrationForm.submitted && !usuario.apellidoMaterno">Este campo es obligatorio.</div>
-                </div>
-            </div>
-            <div class="row mt-3 justify-content-center">
-                <div class="col-md-4">
-                    <label class="form-label">Dirección de despacho</label>
-                    <input type="text" class="form-control" id="txtDireccion" maxlength="150" [(ngModel)]="usuario.direccion" name="direccion">
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label">Fecha nacimiento <span class="text-danger">*</span></label>
-                    <input type="date" class="form-control" id="dtFechaNacimiento" required [(ngModel)]="usuario.fechaNacimiento" name="fechaNacimiento">
-                    <div class="invalid-feedback fecha-nacimiento" *ngIf="registrationForm.submitted && !usuario.fechaNacimiento">Este campo es obligatorio.</div>
-                </div>
-            </div>
-            <div class="row mt-3 justify-content-center">
-                <div class="col-md-4">
-                    <label class="form-label">Nombre de usuario <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="txtUsuario" required [(ngModel)]="usuario.usuario" name="usuario">
-                    <div class="invalid-feedback" *ngIf="registrationForm.submitted && !usuario.usuario">Este campo es obligatorio.</div>
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label">Correo electrónico <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" id="txtCorreo" required [(ngModel)]="usuario.correo" name="correo">
-                    <div class="invalid-feedback" *ngIf="registrationForm.submitted && !usuario.correo">Por favor, introduce un correo electrónico válido.</div>
-                </div>
-            </div>
-            <div class="row mt-3 justify-content-center">
-                <div class="col-md-4">
-                    <label class="form-label">Contraseña <span class="text-danger">*</span></label>
-                    <input type="password" class="form-control" id="txtContrasena" required [(ngModel)]="usuario.contrasena" name="contrasena">
-                    <div class="invalid-feedback contrasena" *ngIf="registrationForm.submitted && !usuario.contrasena">Este campo es obligatorio.</div>
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label">Confirmar contraseña <span class="text-danger">*</span></label>
-                    <input type="password" class="form-control" id="txtRepetirContrasena" required [(ngModel)]="usuario.confirmarContrasena" name="confirmarContrasena">
-                    <div class="invalid-feedback repetir-contrasena" *ngIf="registrationForm.submitted && !usuario.confirmarContrasena">Este campo es obligatorio.</div>
-                </div>
-            </div>
+  <div class="card form-card shadow p-4">
+    <h2 class="text-center">Formulario de Registro</h2>
+    <form [formGroup]="formRegistro" (ngSubmit)="formularioRegistro()">
+      <div class="row mt-3 justify-content-center">
+        <div class="col-md-4">
+          <label class="form-label">Nombre <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="nombre" maxlength="30" formControlName="nombre">
+          <div *ngIf="enviado && formRegistro.get('nombre')?.invalid">
+            <small class="campo-obligatorio" *ngIf="formRegistro.get('nombre')?.errors?.['required']">Este campo es obligatorio.</small>
+            <small class="campo-obligatorio" *ngIf="formRegistro.get('nombre')?.errors?.['soloLetras']">Sólo se permiten letras.</small>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Segundo Nombre <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="segundoNombre" maxlength="30" formControlName="segundoNombre">
+          <div *ngIf="enviado && formRegistro.get('segundoNombre')?.invalid">
+            <small class="campo-obligatorio" *ngIf="formRegistro.get('segundoNombre')?.errors?.['required']">Este campo es obligatorio.</small>
+            <small class="campo-obligatorio" *ngIf="formRegistro.get('segundoNombre')?.errors?.['soloLetras']">Sólo se permiten letras.</small>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 justify-content-center">
+        <div class="col-md-4">
+          <label class="form-label">Apellido Paterno <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="apellidoPaterno" maxlength="30" formControlName="apellidoPaterno">
+          <div *ngIf="enviado && formRegistro.get('apellidoPaterno')?.invalid">
+            <small class="campo-obligatorio" *ngIf="formRegistro.get('apellidoPaterno')?.errors?.['required']">Este campo es obligatorio.</small>
+            <small class="campo-obligatorio" *ngIf="formRegistro.get('apellidoPaterno')?.errors?.['soloLetras']">Sólo se permiten letras.</small>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Apellido Materno <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="apellidoMaterno" maxlength="30" formControlName="apellidoMaterno">
+          <div *ngIf="enviado && formRegistro.get('apellidoMaterno')?.invalid">
+            <small class="campo-obligatorio" *ngIf="formRegistro.get('apellidoMaterno')?.errors?.['required']">Este campo es obligatorio.</small>
+            <small class="campo-obligatorio" *ngIf="formRegistro.get('apellidoMaterno')?.errors?.['soloLetras']">Sólo se permiten letras.</small>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 justify-content-center">
+        <div class="col-md-4">
+          <label class="form-label">Dirección de despacho</label>
+          <input type="text" class="form-control" id="direccion" maxlength="150" formControlName="direccion">
+          <div *ngIf="enviado && formRegistro.get('direccion')?.invalid">
+            <small class="campo-obligatorio" *ngIf="formRegistro.get('direccion')?.errors?.['alphanumerico']">Sólo se permiten caracteres alfanuméricos.</small>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Fecha nacimiento <span class="text-danger">*</span></label>
+          <input type="date" class="form-control" id="fechaNacimiento" formControlName="fechaNacimiento">
+          <div *ngIf="enviado && formRegistro.get('fechaNacimiento')?.invalid">
+            <small class="campo-obligatorio" *ngIf="formRegistro.get('fechaNacimiento')?.errors?.['required']">Este campo es obligatorio.</small>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 justify-content-center">
+        <div class="col-md-4">
+          <label class="form-label">Nombre de usuario <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="usuario" formControlName="usuario">
+          <div *ngIf="enviado && formRegistro.get('usuario')?.invalid">
+            <small class="campo-obligatorio" *ngIf="formRegistro.get('usuario')?.errors?.['required']">Este campo es obligatorio.</small>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Correo electrónico <span class="text-danger">*</span></label>
+          <input type="email" class="form-control" id="correo" formControlName="correo">
+          <div *ngIf="enviado && formRegistro.get('correo')?.invalid">
+            <small class="campo-obligatorio" *ngIf="formRegistro.get('correo')?.errors?.['required']">Este campo es obligatorio.</small>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 justify-content-center">
+        <div class="col-md-4">
+          <label class="form-label">Contraseña <span class="text-danger">*</span></label>
+          <input type="password" class="form-control" id="contrasena" formControlName="contrasena">
+          <div *ngIf="enviado && formRegistro.get('contrasena')?.invalid">
+            <small class="campo-obligatorio" *ngIf="formRegistro.get('contrasena')?.errors?.['required']">Este campo es obligatorio. </small>
+            <small class="campo-obligatorio" *ngIf="formRegistro.get('contrasena')?.errors?.['length']">Largo entre 6 y 18 caracteres. </small>
+            <small class="campo-obligatorio" *ngIf="formRegistro.get('contrasena')?.errors?.['uppercase']">Debe contener al menos una letra mayúscula. </small>
+            <small class="campo-obligatorio" *ngIf="formRegistro.get('contrasena')?.errors?.['number']">Debe contener al menos un número. </small>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Confirmar contraseña <span class="text-danger">*</span></label>
+          <input type="password" class="form-control" id="confirmarContrasena" formControlName="confirmarContrasena">
+          <div *ngIf="enviado && formRegistro.get('confirmarContrasena')?.invalid">
+            <small class="campo-obligatorio" *ngIf="formRegistro.get('confirmarContrasena')?.errors?.['required']">Este campo es obligatorio.</small>
+          </div>
+          <div *ngIf="enviado && formRegistro.errors?.['contraseñasDistintas']">
+            <small class="campo-obligatorio">Las contraseñas no coinciden.</small>
+          </div>
+        </div>
+      </div>
 
-            <div class="row mt-4">
-                <div class="col-10 text-end">
-                    <button type="button" class="btn btn-dark" (click)="limpiarFormulario(registrationForm)">Limpiar</button>
-                    <button type="submit" class="btn btn-primary">Registrarse</button>
-                </div>
-            </div>
-        </form>
-    </div>
+      <div class="row mt-4">
+        <div class="col-10 text-end">
+          <button type="submit" class="btn btn-primary">Registrarse</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
