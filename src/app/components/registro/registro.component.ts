@@ -24,7 +24,7 @@ export class RegistroComponent {
       segundoNombre: ['', Validators.required],
       apellidoPaterno: ['', Validators.required],
       apellidoMaterno: ['', Validators.required],
-      fechaNacimiento: ['', Validators.required],
+      fechaNacimiento: ['', [Validators.required, this.validarEdad(13)]],
       direccion: [''],
       usuario: ['', Validators.required],
       correo: ['', [Validators.required, Validators.email]],
@@ -57,6 +57,22 @@ export class RegistroComponent {
     }
   }
 
+  limpiarFormulario() {
+    this.formRegistro.patchValue({
+      nombre: '',
+      segundoNombre: '',
+      apellidoPaterno: '',
+      apellidoMaterno: '',
+      direccion: '',
+      fechaNacimiento: '',
+      usuario: '',
+      correo: '',
+      contrasena: '',
+      confirmarContrasena: ''
+    });
+  }
+
+  //#region Validación contraseña
   validarIgualdadContraseña(form: FormGroup): ValidationErrors | null {
     const contrasena = form.get('contrasena')!.value;
     const confirmarContrasena = form.get('confirmarContrasena')!.value;
@@ -90,7 +106,36 @@ export class RegistroComponent {
       return Object.keys(errors).length ? errors : null;
     };
   }
+  //#endregion
 
+  //#region Validación edad
+  calcularEdad(fechaNacimiento: Date): number {
+    const hoy = new Date();
+    let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+    const mes = hoy.getMonth() - fechaNacimiento.getMonth();
+    if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNacimiento.getDate())) {
+      edad--;
+    }
+    return edad;
+  }
+
+  validarEdad(edadMinima: number): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const fechaNacimiento = control.value;
+      if (!fechaNacimiento) {
+        return null;
+      }
+
+      const edad = this.calcularEdad(new Date(fechaNacimiento));
+      if (edad < edadMinima) {
+        return { menorEdad: { edadRequerida: edadMinima, edadActual: edad } };
+      }
+      return null;
+    };
+  }
+  //#endregion
+
+  //#region Validaciones ingreso de texto y números
   soloLetrasValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const regex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s-]+$/;
@@ -120,4 +165,5 @@ export class RegistroComponent {
       return null;
     };
   }
+  //#endregion
 }
