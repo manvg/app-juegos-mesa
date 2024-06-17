@@ -3,15 +3,19 @@ import { RegistroComponent } from './registro.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('RegistroComponent', () => {
   let component: RegistroComponent;
   let fixture: ComponentFixture<RegistroComponent>;
+  let snackBar: MatSnackBar;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommonModule, RouterModule, RegistroComponent],
+      imports: [CommonModule, RouterModule, NoopAnimationsModule, RegistroComponent],
       providers: [
+        MatSnackBar,
         {
           provide: ActivatedRoute,
           useValue: {
@@ -24,11 +28,11 @@ describe('RegistroComponent', () => {
           }
         }
       ]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RegistroComponent);
     component = fixture.componentInstance;
+    snackBar = TestBed.inject(MatSnackBar);
     fixture.detectChanges();
   });
 
@@ -63,6 +67,7 @@ describe('RegistroComponent', () => {
 
   it('Si el formulario es válido, guardar usuario', () => {
     spyOn(component, 'formularioRegistro').and.callThrough();
+    spyOn(snackBar, 'open');
 
     component.formRegistro.get('nombre')!.setValue('Manuel');
     component.formRegistro.get('segundoNombre')!.setValue('Alfredo');
@@ -79,6 +84,8 @@ describe('RegistroComponent', () => {
 
     expect(component.formularioRegistro).toHaveBeenCalled();
     expect(component.arrayUsuarios.length).toBe(1);
-    expect(component.mensajeExito).toBe('Usuario agregado con éxito');
+    expect(snackBar.open).toHaveBeenCalledWith('Se guardó correctamente el usuario', 'Cerrar', {
+      duration: 3000,
+    });
   });
 });
