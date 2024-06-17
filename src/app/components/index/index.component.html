@@ -11,17 +11,42 @@
         <li><a routerLink="/registro">Registrarse</a></li>
     </ul>
 </nav>
-<h2>Juegos de Mesa</h2>
+<h4 class="text-center">Juegos de Mesa</h4>
 <br>
-<div class="container_imagenes_inicio">
-    <img src="assets/images/familiar_1.png" alt="Imagen 1">
-    <img src="assets/images/infantil_1.png" alt="Imagen 2">
-    <img src="assets/images/cooperativo_1.png" alt="Imagen 3">
-    <img src="assets/images/aventura_1.png" alt="Imagen 4">
+<div id="carruselPrincipal" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carruselPrincipal" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carruselPrincipal" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carruselPrincipal" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carruselPrincipal" data-bs-slide-to="3" aria-label="Slide 4"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="assets/images/familiar_1.png" class="d-block w-100 carousel-image" alt="Juego categoria Familiar">
+    </div>
+    <div class="carousel-item">
+      <img src="assets/images/infantil_1.png" class="d-block w-100 carousel-image" alt="Juego categoria Infantil">
+    </div>
+    <div class="carousel-item">
+      <img src="assets/images/cooperativo_1.png" class="d-block w-100 carousel-image" alt="Juego categoria Cooperativo">
+    </div>
+    <div class="carousel-item">
+      <img src="assets/images/aventura_1.png" class="d-block w-100 carousel-image" alt="juego categoria Aventura">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carruselPrincipal" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carruselPrincipal" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
 <br>
+<br>
 <!-- Lista de categorías de juegos de mesa -->
-<h2>Categorías</h2>
+<h4 class="text-center">Categorías</h4>
 <div class="container">
     <div class="category">
         <img src="assets/images/categoria_familia.png" alt="Categoría 1">
@@ -42,6 +67,6 @@
         <img src="assets/images/categoria_aventura.png" alt="Categoría 4">
         <h3>Aventura</h3>
         <button class="button" id="btnAventura" routerLink="/aventura">Ver Productos</button>
-    </div>      
+    </div>
     <div class="clear"></div>
 </div>

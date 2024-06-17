@@ -29,16 +29,16 @@ nav ul li a {
 nav ul li a:hover {
     background-color: #2e343a; /* Efecto 1: Añade espacio entre los elementos del menú */
 }
+
+.carousel-image {
+  height: 220px; /* Ajusta esta altura según tus necesidades */
+  object-fit: contain;
+}
+
 /*Contenedores*/
-/*.container {
-    padding: 20px;
-}*/
 .container_nombre_sitio{
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-h2{
-    text-align: center;
 }
 /*Contenedor galeria imagenes con efecto*/
 .container_imagenes_inicio {
@@ -126,7 +126,7 @@ h2{
     font-weight: bold;
 }
 .precio span s {
-    color: gray; 
+    color: gray;
 }
 /*Se agrega Breadcrumb, con enlaces internos*/
 ul.breadcrumb {
@@ -134,18 +134,18 @@ ul.breadcrumb {
     list-style: none;
     background-color: #eee;
 }
-  
+
 ul.breadcrumb li {
     display: inline;
     font-size: 18px;
 }
-  
+
 ul.breadcrumb li+li:before {
     padding: 8px;
     color: black;
     content: "/\00a0";
 }
-  
+
 ul.breadcrumb li a {
     color: #0275d8;
     text-decoration: none;
@@ -206,6 +206,6 @@ ul.breadcrumb li a:hover {
     .product {
         width: calc(100% - 20px);
         float: none;
-        margin: 10px auto; 
+        margin: 10px auto;
     }
 }

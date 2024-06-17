@@ -1,33 +1,36 @@
 <div class="container_nombre_sitio">
-    <h1>Saint Peter Games</h1><!-- Nombre de la empresa -->
+  <h1>Saint Peter Games</h1><!-- Nombre de la empresa -->
 </div>
 <nav>
-    <ul>
-        <li><a routerLink="/index">Inicio</a></li>
-        <li><a routerLink="/familiar">Familiar</a></li>
-        <li><a routerLink="/infantil">Infantil</a></li>
-        <li><a routerLink="/cooperativo">Cooperativo</a></li>
-        <li><a routerLink="/aventura">Aventura</a></li>
-        <li><a routerLink="/registro">Registrarse</a></li>
-    </ul>
+  <ul>
+    <li><a routerLink="/index">Inicio</a></li>
+    <li><a routerLink="/familiar">Familiar</a></li>
+    <li><a routerLink="/infantil">Infantil</a></li>
+    <li><a routerLink="/cooperativo">Cooperativo</a></li>
+    <li><a routerLink="/aventura">Aventura</a></li>
+    <li><a routerLink="/registro">Registrarse</a></li>
+  </ul>
 </nav>
-<h2>Juegos de Mesa</h2>
+ <br>
 <div class="container">
-    <ul class="breadcrumb">
-        <li><a routerLink="/index">Inicio</a></li>
-        <li>Aventura</li>
-    </ul>
-    <div *ngFor="let producto of productos" class="product">
-        <img [src]="producto.imagen" [alt]="producto.titulo">
-        <h3>{{ producto.titulo }}</h3>
-        <p>{{ producto.descripcion }}</p>
-        <p class="precio">
-            ${{ producto.precio }}
+  <ul class="breadcrumb">
+    <li><a routerLink="/index">Inicio</a></li>
+    <li>Aventura</li>
+  </ul>
+  <div class="row">
+    <div class="col-12 col-md-4 text-center" *ngFor="let producto of productos">
+      <div class="card bg-transparent mb-3">
+        <img class="card-img-top img-fluid fixed-size" [src]="producto.imagen" [alt]="producto.titulo">
+        <div class="card-body">
+          <h6 class="card-title">{{producto.titulo}}</h6>
+          <p class="card-text"><span class="precio">${{producto.precio}}   </span>
             <span *ngIf="producto.precioOferta">
-                <s class="precio-anterior">${{ producto.precioOferta }}</s>
+              <s class="precio-anterior"> ${{producto.precioOferta }}</s>
             </span>
-        </p>
-        <button class="button">Añadir al Carrito</button>
+          </p>
+          <a  class="btn btn-primary btn-add-cart" data-id="1">Añadir al carrito</a>
+        </div>
+      </div>
     </div>
-    <div class="clear"></div>
+  </div>
 </div>

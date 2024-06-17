@@ -13,7 +13,7 @@ export class CooperativoComponent {
   productos = [
     {
       imagen: 'assets/images/cooperativo_1.png',
-      titulo: 'Robin Hood Y Sus Alegres Compañeros',
+      titulo: 'Robin Hood',
       descripcion: 'Estilo eurogame y semicooperativo. Está preparado para 1 a 5 jugadores. Incluye variante en solitario y totalmente cooperativa.',
       precio: '50.000',
       precioOferta: null
